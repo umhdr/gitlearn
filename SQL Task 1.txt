@@ -1,0 +1,135 @@
+﻿Types of JOIN:
+
+
+Inner Join: It returns only the rows that have matching values in both tables being joined. Inner join selects records where there is a match between the columns in the two tables.
+
+
+Example :
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers
+ON Orders.CustomerID = Customers.CustomerID;
+
+
+Left Join (or Left Outer Join): It returns all the rows from the left table and the matching rows from the right table. If there is no match, NULL values are returned for the right table. 
+
+
+Example:
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+
+
+Right Join (or Right Outer Join): It returns all the rows from the right table and the matching rows from the left table. If there is no match, NULL values are returned for the left table.
+
+
+Example:
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+RIGHT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+
+
+Full Join (or Full Outer Join): It returns all the rows from both tables, including the unmatched rows. If there is no match, NULL values are returned for the missing table.
+
+
+Example:
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+
+
+
+
+Cross Join (or Cartesian Join): It returns the Cartesian product of the two tables, i.e., all possible combinations of rows from both tables. It does not require any matching condition.
+
+
+Example:
+SELECT * FROM Customers
+CROSS JOIN Orders;
+
+
+
+
+Use cases of JOIN:
+
+
+1. E-commerce website: In an e-commerce application, JOINs can be used to retrieve data from multiple tables like customers, orders, and products. For example, you can retrieve customer information along with their respective orders and the products they purchased using JOINs.
+
+
+2. Human Resources system: In an HR application, JOINs can be used to retrieve data from tables like employees, departments, and salaries. You can fetch employee details, their corresponding department information, and salary details using JOINs.
+
+
+3. Social media platform: JOINs can be utilized in a social media application to fetch data from tables like users, posts, and comments. You can retrieve a user's posts along with the comments associated with each post using JOINs.
+
+
+4. Banking system: In a banking application, JOINs can be used to retrieve data from tables such as accounts, transactions, and customers. You can fetch a customer's account details and their corresponding transactions using JOINs.
+
+
+
+
+SQL Query Tasks
+
+
+Creating the "Books" table:
+
+
+CREATE TABLE Books (
+  book_id INT PRIMARY KEY,
+  title TEXT,
+  author TEXT,
+  price NUMERIC,
+  publication_date DATE
+);
+
+
+
+
+Inserting three sample books into the "Books" table:
+
+
+INSERT INTO Books (book_id, title, author, price, publication_date)
+VALUES
+  (1, 'Book 1', 'Author 1', 9.99, '2022-01-01'),
+  (2, 'Book 2', 'Author 2', 14.99, '2022-02-01'),
+  (3, 'Book 3', 'Author 3', 19.99, '2022-03-01');
+
+
+
+
+Retrieving the titles and authors of all books in the database:
+
+
+SELECT title, author
+FROM Books;
+
+
+
+
+Retrieving the details (title, author, price) of the book with book_id = 2:
+
+
+SELECT title, author, price
+FROM Books
+WHERE book_id = 2;
+
+
+
+
+Updating the price of the book with book_id = 1 to $19.99:
+
+
+UPDATE Books
+SET price = 19.99
+WHERE book_id = 1;
+
+
+
+
+Deleting the book with book_id = 3 from the database:
+
+
+DELETE FROM Books
+WHERE book_id = 3;
